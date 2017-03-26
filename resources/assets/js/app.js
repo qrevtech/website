@@ -13,7 +13,9 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.use(require('vue-qriously'));
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('session', require('./components/Session.vue'));
 
 const app = new Vue({
     el: '#app'
