@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>qrev.tech</title>
 
         <!-- Scripts -->
         <script>
@@ -93,12 +93,7 @@
                     <a href="{{ url('/') }}">QREV<small>.tech</small></a>
                 </div>
                 <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
+                    <a href="#">How To</a>
                 </div>
                 <div class="content">
                     <div class="title">
@@ -109,9 +104,9 @@
                     </div>
                     <div class="links">
                         @if ($share)
-                            <a href="#">shared session. Waiting for host action.</a>
+                            <a>shared session: waiting for host action.</a>
                         @else
-                            <a href="{{ url('/share', ['ident' => $session.$key]) }}">Share this session</a>
+                            <a href="{{ url('/', ['ident' => $session.$key]) }}">Share this session</a>
                         @endif
                     </div>
                 </div>

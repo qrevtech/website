@@ -17,7 +17,9 @@
         },
         methods: {
             tick () {
-                this.value = "" + Math.floor(Math.random() * 1000000);
+                let data = "";
+                for (let i = 0 ; i < 5; i++) data += Math.floor(Math.random() * 1000000);
+                this.value = data.substr(0, 32);
             }
         }
     }

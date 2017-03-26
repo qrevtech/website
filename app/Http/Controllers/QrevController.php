@@ -18,6 +18,7 @@ class QrevController extends Controller
         $key = str_random(16);
 
         if ($ident !== null) {
+            if (strlen($ident) != 32) abort(404);
             $session = substr($ident, 0, 16);
             $key = substr($ident, 16, 16);
         }
