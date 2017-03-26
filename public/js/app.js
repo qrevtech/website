@@ -15660,10 +15660,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        var _this = this;
-
-        window.Echo.channel('session.' + this.session).listen('Push', function (e) {
-            var _JSON$parse = JSON.parse(window.Crypto.AES.decrypt(e.payload, _this.key)),
+        var self = this;
+        window.Echo.channel('session.' + self.session).listen('Push', function (e) {
+            var _JSON$parse = JSON.parse(window.Crypto.AES.decrypt(e.payload, self.password).toString(window.Crypto.enc.Utf8)),
                 url = _JSON$parse.url;
 
             window.location = url;

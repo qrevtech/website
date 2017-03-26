@@ -23,9 +23,10 @@
             }
         },
         mounted () {
-            window.Echo.channel('session.' + this.session)
+            const self = this;
+            window.Echo.channel('session.' + self.session)
                 .listen('Push', (e) => {
-                    let {url} = JSON.parse(window.Crypto.AES.decrypt(e.payload, this.key));
+                    let { url } = JSON.parse(window.Crypto.AES.decrypt(e.payload, self.password).toString(window.Crypto.enc.Utf8));
                     window.location = url;
                 });
         }

@@ -90,7 +90,7 @@
                 @endif
 
                 <div class="content">
-                    <session session="hello" password="{{ str_random(32) }}" />
+                    <session session="{{ str_random(16) }}" password="{{ str_random(32) }}" />
                 </div>
             </div>
         </div>
