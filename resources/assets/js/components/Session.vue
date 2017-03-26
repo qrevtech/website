@@ -1,6 +1,6 @@
 <template>
     <div>
-        <qriously :value="payload" :size="250" />
+        <qriously :value="payload" :size="300" />
     </div>
 </template>
 

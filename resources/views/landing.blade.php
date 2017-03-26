@@ -20,6 +20,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -44,6 +45,12 @@
 
             .position-ref {
                 position: relative;
+            }
+
+            .top-left {
+                position: absolute;
+                left: 10px;
+                top: 18px;
             }
 
             .top-right {
@@ -73,24 +80,40 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .hidden {
+                display: none !important;
+            }
         </style>
     </head>
     <body>
         <div id="app">
             <div class="flex-center position-ref full-height">
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @if (Auth::check())
-                            <a href="{{ url('/home') }}">Home</a>
+                <div class="top-left links">
+                    <a href="{{ url('/') }}">QREV<small>.tech</small></a>
+                </div>
+                <div class="top-right links">
+                    @if (Auth::check())
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ url('/login') }}">Login</a>
+                        <a href="{{ url('/register') }}">Register</a>
+                    @endif
+                </div>
+                <div class="content">
+                    <div class="title">
+                        <div class="{{ $share ? 'hidden' : '' }} ">
+                            <session session="{{ $session }}" password="{{ $key }}" />
+                        </div>
+                        @if ($share) <wait/> @endif
+                    </div>
+                    <div class="links">
+                        @if ($share)
+                            <a href="#">shared session. Waiting for host action.</a>
                         @else
-                            <a href="{{ url('/login') }}">Login</a>
-                            <a href="{{ url('/register') }}">Register</a>
+                            <a href="{{ url('/share', ['ident' => $session.$key]) }}">Share this session</a>
                         @endif
                     </div>
-                @endif
-
-                <div class="content">
-                    <session session="{{ str_random(16) }}" password="{{ str_random(32) }}" />
                 </div>
             </div>
         </div>

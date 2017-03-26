@@ -16,6 +16,7 @@ require('./bootstrap');
 Vue.use(require('vue-qriously'));
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('session', require('./components/Session.vue'));
+Vue.component('wait', require('./components/Wait.vue'));
 
 const app = new Vue({
     el: '#app'
